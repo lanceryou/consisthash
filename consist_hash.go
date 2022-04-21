@@ -50,11 +50,7 @@ func WithHashTable(t HashTable) Option {
 	}
 }
 
-// ConsistHash 采用虚拟节点 结合一致性哈希算法
-// 生成虚拟节点环 - 物理节点对应 具体可业务自己根据需要生成
-// 根据一致性哈希算法计算节点
-// 一般一致性哈希会双写，假如做数据迁移 A B两个机器，新增C机器 当前计算节点是 13，14
-// 原来13 14是A，B节点，现在是A C  查询的时候查C不存在顺延到 B
+// ConsistHash support virtual count
 type ConsistHash struct {
 	virtualCount uint32
 	vm           map[uint64]string // index + addr
